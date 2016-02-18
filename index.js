@@ -31,3 +31,16 @@ app.get('/db', function (request, response) {
     });
   });
 })
+
+app.get('/notes/:channel') {
+  console.log("channel = "+req.params.channel);
+  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+    client.query('SELECT * FROM note WHERE channel = $1', [req.pararms.channel], function(err, result) {
+      done();
+      if (err)
+       { console.error(err); response.send("Error " + err); }
+      else
+       { response.render('pages/db', {results: result.rows} ); }
+    });
+  });
+}
