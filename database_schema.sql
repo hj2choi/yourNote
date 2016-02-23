@@ -1,4 +1,4 @@
-DROP TABLE if exists channel cascade;
+DROP TABLE if exists note cascade;
 
 CREATE TABLE note (
   id serial primary key,
