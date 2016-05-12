@@ -4,6 +4,7 @@ var DATABASE_URL = process.env.DATABASE_URL || "postgres://iejemqeecyepud:BY9blj
 var express = require('express');
 var bodyParser = require("body-parser");
 var app = express();
+var visitCount = 0;
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -64,6 +65,7 @@ app.get('/allNotes', function(request, response) {
 
 
 app.get('/notes/:channel', function(request, response) {
+  console.log("visit count += "+visitCount++);
   console.log("channel = "+request.params.channel);
   pg.connect(DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM note WHERE channel = $1', [request.params.channel], function(err, result) {
