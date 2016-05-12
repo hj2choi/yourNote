@@ -21,8 +21,15 @@
 </div>
 <div class="container">
 
-</div>
+<ul>
+    <% results.forEach(function(r) { %>
+      <% if (r.field.length>0) {%>
+        <li><a href= <%= "/notes/"+r.channel %> ><%= r.channel + " (" + (r.field.length) + ")" %></a></li>
+      <% } %>
+    <% }); %>
+</ul>
 
+</div>
 
 </body>
 <script>
@@ -30,6 +37,13 @@ $(document).ready(function(){
     $("#button").click(function(){
       console.log("click");
       window.location = "/notes/"+$("#channelInput").val();
+    });
+
+    $(document).keypress(function(e) {
+      if(e.which == 13) {
+        console.log("click");
+        window.location = "/notes/"+$("#channelInput").val();
+      }
     });
 });
 
