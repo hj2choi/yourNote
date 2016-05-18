@@ -82,8 +82,7 @@ app.get('/notes/:channel', function(request, response) {
           else
           { /*response.render('pages/db', {results: result.rows} );*/
             console.log("successfully inserted");
-            response.render('pages/notepad', {results: {"field":"", "channel":request.params.channel},
-                                              counter: visitCount);
+            response.render('pages/notepad', {results: {"field":"", "channel":request.params.channel}});
           }
         });
       }
