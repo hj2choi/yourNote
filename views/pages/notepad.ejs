@@ -36,14 +36,14 @@
   <textarea id="notepad-textarea"><%=results.field %></textarea>
 </div>
 <textarea id="channelValue" style="visibility:hidden;display:none;"><%=results.channel %></textarea>
-
+<textarea id="visitCounterValue" style="visibility:hidden;display:none;"><%=counter %></textarea>
 </body>
 <script>
 var channel;
 $(document).ready(function(){
   channel = $("#channelValue").val();
   //console.log(channel);
-
+  console.log("total times visited = "+$("#visitCounterValue").val());
 });
 
 $(document).keypress(function (event){
